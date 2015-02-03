@@ -8,7 +8,7 @@
  ;; default w/ blob-storage for work
  [:app :lt.objs.files/file.ignore-pattern "(^\\..*)|\\.class$|target/|svn|cvs|\\.git|\\.pyc|~|\\.swp|\\.jar|.DS_Store|\\.nrepl-port|blob-storage"]
  ;; :ltexec_clj is a custom ex_command from my vim.cljs
- [:app :lt.plugins.vim/map-keys {"0" "^",
+[:app :lt.plugins.vim/map-keys {"0" "^",
                                       "-" ":ltexec user.find-next-clojure-word",
                                       "j" "gj",
                                       "k" "gk"
@@ -130,6 +130,7 @@
  ;; The editor tag is applied to all editors
  [:editor :lt.objs.editor/no-wrap]
  [:editor :lt.objs.style/set-theme "solarized"]
+ ;; [:editor :lt.objs.style/set-theme "rubyblue" ]
  [:editor :lt.plugins.vim/activate-vim]
  ;; [:editor :lt.objs.editor/hide-line-numbers]
  [:editor :lt.objs.editor/line-numbers]

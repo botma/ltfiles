@@ -8,7 +8,7 @@
  [:app "alt-t" :user.print-context]
  ;; [:app "alt-tab" :tabset.next]
  [:app "alt-x" :tabset.close]
- [:app "cmd-k" :clear-inline-results]
+ [:app "ctrl-alt-k" :clear-inline-results]
  ;; [:app "ctrl-o r" :tabs.move-next-tabset]
  [:app "-ctrl-x ctrl-f" :claire-show]
  ;; Broken alt combos: i,e
@@ -19,13 +19,12 @@
  [:app "ctrl-x h" :tabset.prev]
 
  [:editor "alt-g" :gitbeam.out-with-external-browser]
- [:editor ""]
  ;; here instead of <Space> vim/map-keys b/c of selection limitation
  [:editor "alt-," :user.toggle-current-inline-result]
  [:editor "ctrl-j" :editor.sublime.selectLinesDownward]
  [:editor "alt-shift-w" :editor.watch.unwatch]
  [:editor "ctrl-k" :editor.sublime.selectLinesUpward]
- [:editor "cmd-=" :paredit.select.parent :smart-indent-selection :paredit.select.clear]
+ [:editor "ctrl-alt-=" :paredit.select.parent :smart-indent-selection :paredit.select.clear]
  [:editor "alt-v" :user.view-current-inline-result]
  [:editor "alt-w" :editor.watch.watch-selection]
  ;;Eval the parent ( ... )
@@ -80,13 +79,13 @@
  [:editor.keys.vim.normal "cmd-," :paredit.select.parent]
  ;; Satisfied having as a default. Can always make this more specific - https://github.com/LightTable/LightTable/issues/1379
  [:editor.keys.vim.normal "backspace" :paredit-plus.backward-delete]
-
+  [:editor.keys.vim.nomal "ctrl-c" :user.copy-latest-vim-register]
  ;; avoid going too out of the way keys for command bar
  [:filter-list.input "ctrl-n" (:filter-list.input.move-selection 1)]
  [:filter-list.input "ctrl-p" (:filter-list.input.move-selection -1)]
 
  [:tabs "shift-tab" :snippet.select ]
 
- [:workspace.focused "ctrl-n" :lt.plugins.workspace-nav/navigate-south]
- [:workspace.focused "ctrl-p" :lt.plugins.workspace-nav/navigate-north]
+ ;; [:workspace.focused "ctrl-n" :lt.plugins.workspace-nav/navigate-south]
+ ;; [:workspace.focused "ctrl-p" :lt.plugins.workspace-nav/navigate-north]
 ]
