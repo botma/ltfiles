@@ -1,21 +1,25 @@
 [
  [:app "alt-d" :dev-inspector]
- [:app "ctrl-o t" :tabs.move-new-tabset]
+ ;; [:app "ctrl-o t" :tabs.move-new-tabset]
  [:app "alt-space" :user.commandbar]
  [:app "alt-l" :user.def-let]
  [:app "cmd-b" :user.open-buffers]
  ;; needs to be in :app to print actual context
  [:app "alt-t" :user.print-context]
- [:app "alt-tab" :tabset.next]
+ ;; [:app "alt-tab" :tabset.next]
  [:app "alt-x" :tabset.close]
  [:app "cmd-k" :clear-inline-results]
- [:app "ctrl-o r" :tabs.move-next-tabset]
+ ;; [:app "ctrl-o r" :tabs.move-next-tabset]
  [:app "-ctrl-x ctrl-f" :claire-show]
-
  ;; Broken alt combos: i,e
+ [:app "ctrl-\\" :tabs.move-new-tabset]
+ [:app "ctrl-x k" :tabs.move-next-tabset]
+ [:app "ctrl-x j" :tabs.move-prev-tabset]
+ [:app "ctrl-x l" :tabset.next]
+ [:app "ctrl-x h" :tabset.prev]
 
  [:editor "alt-g" :gitbeam.out-with-external-browser]
-
+ [:editor ""]
  ;; here instead of <Space> vim/map-keys b/c of selection limitation
  [:editor "alt-," :user.toggle-current-inline-result]
  [:editor "ctrl-j" :editor.sublime.selectLinesDownward]
@@ -27,7 +31,7 @@
  ;;Eval the parent ( ... )
  [:editor "alt-enter" (:paredit.select.parent "(") :eval-editor-form :paredit.select.clear]
  [:editor "alt-shift-c" :user.copy-current-inline-result]
- [:editor "alt-;" :user.comment-let]
+ [:editor "ctrl-/" :user.comment-let]
  [:editor "alt-shift-g" :gitbeam.out-with-internal-browser]
  [:editor "alt-=" :smart-indent-selection]
  [:editor "alt-c" :gitbeam.out-with-clipboard-copy]
@@ -70,7 +74,7 @@
 
  [:editor.javascript "alt-enter" (:paredit.select.parent "{") :eval-editor-form :paredit.select.clear]
 
- [:editor.keys.vim.normal "cmd-;" :user.vim-toggle-comment-selection]
+ [:editor.keys.vim.normal "ctrl-/" :user.vim-toggle-comment-selection]
  [:editor.keys.vim.normal "alt-q" :lt.plugins.reflow/reflow]
  ;;Select the parent expression, whether that's [], {}, or ()
  [:editor.keys.vim.normal "cmd-," :paredit.select.parent]
@@ -81,7 +85,7 @@
  [:filter-list.input "ctrl-n" (:filter-list.input.move-selection 1)]
  [:filter-list.input "ctrl-p" (:filter-list.input.move-selection -1)]
 
- [:tabs "ctrl-tab" :snippet.select]
+ [:tabs "shift-tab" :snippet.select ]
 
  [:workspace.focused "ctrl-n" :lt.plugins.workspace-nav/navigate-south]
  [:workspace.focused "ctrl-p" :lt.plugins.workspace-nav/navigate-north]

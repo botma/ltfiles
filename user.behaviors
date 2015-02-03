@@ -131,12 +131,13 @@
  [:editor :lt.objs.editor/no-wrap]
  [:editor :lt.objs.style/set-theme "solarized"]
  [:editor :lt.plugins.vim/activate-vim]
- [:editor :lt.objs.editor/hide-line-numbers]
+ ;; [:editor :lt.objs.editor/hide-line-numbers]
+ [:editor :lt.objs.editor/line-numbers]
  [:editor :lt.objs.editor.pool/line-comment-options {:indent true}]
  [:editor :lt.plugins.reflow/set-width 80]
  ;; turn off aggressive autocomplete
- [:editor :-lt.plugins.auto-complete/auto-show-on-input]
- [:editor :-lt.plugins.ctags/on-result]
+ ;; [:editor :-lt.plugins.auto-complete/auto-show-on-input]
+ ;; [:editor :-lt.plugins.ctags/on-result]
 
  ;; turn off large info boxes while editing any behavior
  [:editor.behaviors :-lt.objs.langs.behaviors/show-info-on-move]
@@ -153,6 +154,12 @@
 
  ;; allow transient files to close without prompt
  [:editor.transient :-lt.objs.editor.file/dirty-on-change]
+
+ [:editor   :lt.plugins.vim/set-options {"enableInsertModeEscKeys" true,
+                                  "insertModeEscKeys" "jk"
+                                  "insertModeEscKeysTimeout" 200}]
+
+
 
  [:files :lt.objs.files/file-types [{:exts [:cljs.hl :boot], :mime "text/x-clojurescript", :tags [:editor.cljs], :name "hoplon"}
                                     {:exts [:cljx], :mime "text/x-clojure", :tags [:editor.clj], :name "cljx"}]]
