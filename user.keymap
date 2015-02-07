@@ -19,6 +19,10 @@
  [:app "ctrl-x l" :tabset.next]
  [:app "ctrl-x h" :tabset.prev]
 
+ [:editor "ctrl-c" :editor.copy]
+ [:editor "ctrl-alt-q" :editor.unjump]
+ [:editor "ctrl-alt-d" :editor.jump-to-definition-at-cursor]
+
  [:editor "alt-g" :gitbeam.out-with-external-browser]
  ;; here instead of <Space> vim/map-keys b/c of selection limitation
  ;; [:editor "alt-," :user.toggle-current-inline-result]
@@ -35,7 +39,6 @@
  [:editor "alt-shift-g" :gitbeam.out-with-internal-browser]
  [:editor "alt-=" :smart-indent-selection]
  [:editor "alt-c" :gitbeam.out-with-clipboard-copy]
-
 
  ;; Thanks to https://github.com/jamii/lt-config/ for most watches
  [:editor.clj "alt-shift-p" (:eval.custom "(with-out-str (clojure.pprint/write __SELECTION__ :suppress-namespaces false :dispatch clojure.pprint/code-dispatch))" {:verbatim true, :result-type :replace})]
@@ -82,7 +85,6 @@
                                        ;; :smart-indent-selection
                                        ;; :paredit.select.clear]]
 
- [:editor "ctrl-." :editor.jump-to-definition-at-cursor]
  ;; Satisfied having as a default. Can always make this more specific - https://github.com/LightTable/LightTable/issues/1379
  [:editor.keys.vim.normal "backspace" :paredit-plus.backward-delete]
  [:editor.keys.vim.normal "ctrl-c" :user.copy-latest-vim-register]
@@ -92,14 +94,11 @@
  ;; [:editor.keys.vim.normal "alt-shift-." :paredit.shrink.right]
 
  ;; avoid going too out of the way keys for command bar
- [:filter-list.input "ctrl-n" (:filter-list.input.move-selection 1)]
- [:filter-list.input "ctrl-p" (:filter-list.input.move-selection -1)]
+ [:filter-list.input "ctrl-j" (:filter-list.input.move-selection 1)]
+ [:filter-list.input "ctrl-k" (:filter-list.input.move-selection -1)]
+ [:filter-list.input "space" (:filter-list.input.select! )]
 
  [:tabs "shift-tab" :snippet.select ]
-
- [:editor "ctrl-c" :editor.copy]
-  [:editor "ctrl-alt-q" :editor.unjump]
- [:editor "ctrl-alt-d" :editor.jump-to-definition-at-cursor]
 
 
  ;; [:workspace.focused "ctrl-n" :lt.plugins.workspace-nav/navigate-south]
