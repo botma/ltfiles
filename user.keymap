@@ -1,24 +1,27 @@
 [
- [:app "alt-d" :dev-inspector]
+ ;; [:app "alt-d" :dev-inspector]
  ;; [:app "ctrl-o t" :tabs.move-new-tabset]
  ;; [:app "alt-space" :user.commandbar]
- [:app "alt-space" :show-commandbar]
- [:app "alt-l" :user.def-let]
- [:app "cmd-b" :user.open-buffers]
+ ;; [:app "alt-space" :show-commandbar]
+ ;; [:app "alt-l" :user.def-let]
+ ;; [:app "cmd-b" :user.open-buffers]
  ;; needs to be in :app to print actual context
- [:app "alt-t" :user.print-context]
+ ;; [:app "alt-t" :user.print-context]
  ;; [:app "alt-tab" :tabset.next]
- [:app "alt-x" :tabset.close]
  [:app "ctrl-alt-k" :clear-inline-results]
- ;; [:app "ctrl-o r" :tabs.move-next-tabset]
- [:app "-ctrl-x ctrl-f" :claire-show]
+ [:app "ctrl-x ctrl-f" :claire-show]
  ;; Broken alt combos: i,e
  [:app "ctrl-\\" :tabs.move-new-tabset]
+ [:app "ctrl-shift-\\" :tabset.close]
  [:app "ctrl-x k" :tabs.move-next-tabset]
  [:app "ctrl-x j" :tabs.move-prev-tabset]
  [:app "ctrl-x l" :tabset.next]
  [:app "ctrl-x h" :tabset.prev]
+ [:app "ctrl-alt-c" :toggle-console]
+ [:app "alt-ctrl-w" :workspace.show]
 
+
+ [:editor "ctrl-shift-l" :editor.select-line]
  [:editor "ctrl-c" :editor.copy]
  [:editor "ctrl-alt-q" :editor.unjump]
  [:editor "ctrl-alt-d" :editor.jump-to-definition-at-cursor]
@@ -35,24 +38,31 @@
  ;;Eval the parent ( ... )
  [:editor "alt-enter" (:paredit.select.parent "(") :eval-editor-form :paredit.select.clear]
  [:editor "alt-shift-c" :user.copy-current-inline-result]
- [:editor "ctrl-/" :user.comment-let]
+ [:editor "ctrl-;" :user.comment-let]
  [:editor "alt-shift-g" :gitbeam.out-with-internal-browser]
  [:editor "alt-=" :smart-indent-selection]
  [:editor "alt-c" :gitbeam.out-with-clipboard-copy]
 
+ [:editor "ctrl-p" :paredit.select.parent]
+ [:editor "ctrl-shift-p" :paredit.select.clear]
+  [:editor "shift-." :paredit.grow.right]
+  [:editor "shift-," :paredit.grow.left]
+  [:editor "alt-shift-," :paredit.shrink.left]
+  [:editor "alt-shift-." :paredit.shrink.right]
+
  ;; Thanks to https://github.com/jamii/lt-config/ for most watches
- [:editor.clj "alt-shift-p" (:eval.custom "(with-out-str (clojure.pprint/write __SELECTION__ :suppress-namespaces false :dispatch clojure.pprint/code-dispatch))" {:verbatim true, :result-type :replace})]
- [:editor.clj "alt-m" (:eval.custom "(with-out-str (clojure.pprint/write (macroexpand-1 '__SELECTION__) :suppress-namespaces false :dispatch clojure.pprint/code-dispatch))" {:verbatim true, :result-type :inline})]
- [:editor.clj "alt-p" (:eval.custom "(with-out-str (clojure.pprint/write __SELECTION__ :suppress-namespaces false :dispatch clojure.pprint/code-dispatch))" {:verbatim true, :result-type :inline})]
- [:editor.clj "alt-r" (:eval.custom "(clojure.test/run-tests)" {:result-type :statusbar})]
- [:editor.clj "alt-shift-b" (:eval.custom "(do (require '[criterium.core]) (with-out-str (criterium.core/bench (do __SELECTION__))))" {:verbatim true, :result-type :inline})]
- [:editor.clj "alt-b" (:eval.custom "(with-out-str (time (do __SELECTION__)))" {:verbatim true, :result-type :inline})]
+  [:editor.clj "alt-shift-p" (:eval.custom "(with-out-str (clojure.pprint/write __SELECTION__ :suppress-namespaces false :dispatch clojure.pprint/code-dispatch))" {:verbatim true, :result-type :replace})]
+  [:editor.clj "alt-m" (:eval.custom "(with-out-str (clojure.pprint/write (macroexpand-1 '__SELECTION__) :suppress-namespaces false :dispatch clojure.pprint/code-dispatch))" {:verbatim true, :result-type :inline})]
+  [:editor.clj "alt-p" (:eval.custom "(with-out-str (clojure.pprint/write __SELECTION__ :suppress-namespaces false :dispatch clojure.pprint/code-dispatch))" {:verbatim true, :result-type :inline})]
+  [:editor.clj "alt-r" (:eval.custom "(clojure.test/run-tests)" {:result-type :statusbar})]
+  [:editor.clj "alt-shift-b" (:eval.custom "(do (require '[criterium.core]) (with-out-str (criterium.core/bench (do __SELECTION__))))" {:verbatim true, :result-type :inline})]
+  [:editor.clj "alt-b" (:eval.custom "(with-out-str (time (do __SELECTION__)))" {:verbatim true, :result-type :inline})]
 
  ;; watches
- [:editor.clj "alt-t" (:editor.watch.custom-watch-selection
-                       "(let [start (java.lang.System/nanoTime)
+[:editor.clj "alt-t" (:editor.watch.custom-watch-selection
+                       "(let [start (java.langSystem/nanoTime)
                        res (do __SELECTION__)]
-                       __|(str (float (/ (- (java.lang.System/nanoTime) start) 1000000)) \" ms\")|__
+                      __|(str (float (/ (- (java.lang.System/nanoTime) start) 1000000)) \" ms\")|__
                        res)"
                        {:verbatim true, :class "timed"})]
  [:editor.clj "alt-shift-t" (:editor.watch.custom-watch-selection "(let [result (do __SELECTION__)] (prn __SELECTION*__ result) __|result|__ result)" {})]
@@ -75,12 +85,12 @@
  ;; Sorts a clojure :require statement. Doesn't pretty print it yet
  [:editor.cljs "alt-r" (:eval.custom "(cons (first '__SELECTION__) (sort (rest '__SELECTION__)))" {:verbatim false, :result-type :replace})]
 
- [:editor.javascript "alt-enter" (:paredit.select.parent "{") :eval-editor-form :paredit.select.clear]
+ ;; [:editor.javascript "alt-enter" (:paredit.select.parent "{") :eval-editor-form :paredit.select.clear]
 
- [:editor.keys.vim.normal "ctrl-/" :user.vim-toggle-comment-selection]
+ [:editor.keys.vim.normal "ctrl-;" :user.vim-toggle-comment-selection]
  [:editor.keys.vim.normal "alt-q" :lt.plugins.reflow/reflow]
  ;;Select the parent expression, whether that's [], {}, or ()
- [:editor.keys.vim.normal "ctrl-shift-9" :paredit.select.parent]
+ ;; [:editor.keys.vim.normal "ctrl-shift-9" :paredit.select.parent]
  ;; [:editor.keys.vim.normal "ctrl-." i[:paredit.select.parent
                                        ;; :smart-indent-selection
                                        ;; :paredit.select.clear]]
@@ -96,11 +106,13 @@
  ;; avoid going too out of the way keys for command bar
  [:filter-list.input "ctrl-j" (:filter-list.input.move-selection 1)]
  [:filter-list.input "ctrl-k" (:filter-list.input.move-selection -1)]
- [:filter-list.input "space" (:filter-list.input.select! )]
+ [:filter-list.input "tab" (:filter-list.input.select! )]
 
  [:tabs "shift-tab" :snippet.select ]
 
 
- ;; [:workspace.focused "ctrl-n" :lt.plugins.workspace-nav/navigate-south]
- ;; [:workspace.focused "ctrl-p" :lt.plugins.workspace-nav/navigate-north]
+  [:workspace.focused "ctrl-k" :lt.plugins.workspace-nav/navigate-south]
+  [:workspace.focused "ctrl-j" :lt.plugins.workspace-nav/navigate-north]
+
+
 ]

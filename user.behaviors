@@ -1,6 +1,9 @@
 [
  ;; The app tag is kind of like global scope. You assign behaviors that affect
  ;; all of Light Table here
+
+
+
  [:app :lt.objs.style/set-skin "dark"]
  [:app :lt.objs.plugins/load-js "user_compiled.js"]
  [:app :lt.objs.settings/pair-keymap-diffs]
@@ -130,6 +133,7 @@
  ;; The editor tag is applied to all editors
  [:editor :lt.objs.editor/no-wrap]
  [:editor :lt.objs.style/set-theme "solarized"]
+ [:editor :lt.objs.style/font-settings "" 14 1.2]
  ;; [:editor :lt.objs.style/set-theme "rubyblue" ]
  [:editor :lt.plugins.vim/activate-vim]
  ;; [:editor :lt.objs.editor/hide-line-numbers]
